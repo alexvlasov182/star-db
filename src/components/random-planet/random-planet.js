@@ -5,6 +5,7 @@ import Spinner from "../spinner";
 
 import "./random-planet.css";
 import ErrorIndicator from "../error-indicator";
+import ErrorButton from "../error-button";
 
 export default class RandomPlanet extends Component {
   swapiService = new SwapiService();
