@@ -5,3 +5,7 @@
 .item-list .list-group-item:hover {
   background-color: #444;
 }
+
+.card-body {
+  margin-bottom: 15px;
+}
