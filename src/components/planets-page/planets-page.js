@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 
-import "./people-page.css";
+import "./planets-page";
 
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
+import PlanetDetails from "../planet-details";
 import ErrorIndicator from "../error-indicator";
+
 import SwapiService from "../../services/swapi-service";
 
-export default class PeoplePage extends Component {
+export default class PlantesPage extends Component {
   swapiService = new SwapiService();
 
   state = {
-    selectedPerson: 5,
+    selectedPlanet: 5,
     hasError: false,
   };
 
@@ -21,9 +22,9 @@ export default class PeoplePage extends Component {
     });
   }
 
-  onPersonSelected = (selectedPerson) => {
+  onPlanetSelected = (selectedPlanet) => {
     this.setState({
-      selectedPerson: selectedPerson,
+      selectedPlanet: selectedPlanet,
     });
   };
 
@@ -36,12 +37,12 @@ export default class PeoplePage extends Component {
       <div className="row mb2">
         <div className="col-md-6">
           <ItemList
-            onItemSelected={this.onPersonSelected}
-            getData={this.swapiService.getAllPeople}
+            onItemSelected={this.onPlanetSelected}
+            getData={this.swapiService.getAllPlanets}
           />
         </div>
         <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPerson} />
+          <PlanetDetails planetId={this.state.selectedPlanet} />
         </div>
       </div>
     );
