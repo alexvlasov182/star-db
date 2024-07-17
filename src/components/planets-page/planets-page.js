@@ -7,6 +7,7 @@ import PlanetDetails from "../planet-details";
 import ErrorIndicator from "../error-indicator";
 
 import SwapiService from "../../services/swapi-service";
+import Row from "../row";
 
 export default class PlantesPage extends Component {
   swapiService = new SwapiService();
@@ -33,18 +34,17 @@ export default class PlantesPage extends Component {
       return <ErrorIndicator />;
     }
 
-    return (
-      <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList
-            onItemSelected={this.onPlanetSelected}
-            getData={this.swapiService.getAllPlanets}
-          />
-        </div>
-        <div className="col-md-6">
-          <PlanetDetails planetId={this.state.selectedPlanet} />
-        </div>
-      </div>
+    const itemList = (
+      <ItemList
+        onItemSelected={this.onPlanetSelected}
+        getData={this.swapiService.getAllPlanets}
+      />
     );
+
+    const planetDetails = (
+      <PlanetDetails planetId={this.state.selectedPlanet} />
+    );
+
+    return <Row left={itemList} right={planetDetails} />;
   }
 }

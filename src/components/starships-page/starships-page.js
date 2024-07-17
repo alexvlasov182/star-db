@@ -5,6 +5,7 @@ import "./starships-page";
 import ItemList from "../item-list";
 import StarshipDetails from "../starships-details";
 import ErrorIndicator from "../error-indicator";
+import Row from "../row";
 
 import SwapiService from "../../services/swapi-service";
 
@@ -33,17 +34,20 @@ export default class StrshipsPage extends Component {
       return <ErrorIndicator />;
     }
 
+    const itemList = (
+      <ItemList
+        onItemSelected={this.onStarshipSelected}
+        getData={this.swapiService.getAllStarships}
+      />
+    );
+
+    const personDetails = (
+      <StarshipDetails starshipId={this.state.selectedStarship} />
+    );
+
     return (
-      <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList
-            onItemSelected={this.onStarshipSelected}
-            getData={this.swapiService.getAllStarships}
-          />
-        </div>
-        <div className="col-md-6">
-          <StarshipDetails starshipId={this.state.selectedStarship} />
-        </div>
+      <div>
+        <Row left={itemList} right={personDetails} />
       </div>
     );
   }
