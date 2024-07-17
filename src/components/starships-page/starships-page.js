@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./starships-page";
 
 import ItemList from "../item-list";
-// import PersonDetails from "../person-details";
+import StarshipDetails from "../starships-details";
 import ErrorIndicator from "../error-indicator";
 
 import SwapiService from "../../services/swapi-service";
@@ -41,9 +41,9 @@ export default class StrshipsPage extends Component {
             getData={this.swapiService.getAllStarships}
           />
         </div>
-        {/* <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPerson} />
-        </div> */}
+        <div className="col-md-6">
+          <StarshipDetails starshipId={this.state.selectedStarship} />
+        </div>
       </div>
     );
   }
