@@ -3,24 +3,18 @@ import React, { Component } from "react";
 import "./people-page.css";
 
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
+import PersonDetails from "../item-details";
 import ErrorIndicator from "../error-indicator";
 import SwapiService from "../../services/swapi-service";
 import Row from "../row";
+import ErrorBoundry from "../error-boundry";
 
 export default class PeoplePage extends Component {
   swapiService = new SwapiService();
 
   state = {
     selectedPerson: 5,
-    hasError: false,
   };
-
-  componentDidCatch() {
-    this.setState({
-      hasError: true,
-    });
-  }
 
   onPersonSelected = (selectedPerson) => {
     this.setState({
@@ -37,11 +31,15 @@ export default class PeoplePage extends Component {
       <ItemList
         onItemSelected={this.onPersonSelected}
         getData={this.swapiService.getAllPeople}
-      />
+      >
+        {(i) => `${i.name} (${i.birhtYear})`}
+      </ItemList>
     );
 
     const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
+      <ErrorBoundry>
+        <PersonDetails personId={this.state.selectedPerson} />
+      </ErrorBoundry>
     );
 
     return <Row left={itemList} right={personDetails} />;
