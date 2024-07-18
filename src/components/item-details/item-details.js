@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import SwapiService from "../../services/swapi-service";
 import ErrorButton from "../error-button/error-button";
@@ -54,7 +55,7 @@ export default class ItemDetails extends Component {
       return <span>Select an item from list</span>;
     }
 
-    const { id, name, gender, birthYear, eyeColor } = item;
+    const { name } = item;
 
     return (
       <div className="item-details card">

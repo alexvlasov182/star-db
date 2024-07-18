@@ -2,15 +2,23 @@ import React, { Component } from "react";
 
 import Header from "../header";
 
-// import StrshipsPage from "../starships-page/starships-page";
 // import PlanetsPage from "../planets-page";
 
 import "./app.css";
 
 import ErrorIndicator from "../error-indicator";
 import Row from "../row";
+
 import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
+import {
+  PersonList,
+  PersonDetails,
+  PlanetDetails,
+  StrshipDetails,
+  PlanetList,
+  StarshipList,
+} from "../sw-components";
 
 export default class App extends Component {
   state = {
@@ -60,9 +68,21 @@ export default class App extends Component {
           {/* <ErrorButton /> */}
         </div>
         <Row left={personDetails} right={starshipDetails} />
+        <PersonDetails itemId={5} />
+        <StrshipDetails itemId={11} />
+        <PlanetDetails itemId={6} />
+        <PlanetDetails />
+        {/* <StarshipDetails /> */}
+
+        <PersonList />
+
+        <PlanetList />
+
+        <StarshipList />
+
         {/* <PeoplePage /> */}
-        {/* <StrshipsPage />
-        <PlanetsPage /> */}
+
+        {/* <PlanetsPage />  */}
       </div>
     );
   }
