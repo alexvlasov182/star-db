@@ -20,6 +20,8 @@ import {
   StarshipList,
 } from "../sw-components";
 
+import { SwapiServiceProvider } from "../swapi-service-context";
+
 export default class App extends Component {
   state = {
     hasError: false,
@@ -41,7 +43,7 @@ export default class App extends Component {
       this.swapiService;
 
     const personDetails = (
-      <ItemDetails itemId={11} getData={getPerson} getImageUrl={getPersonImage}>
+      <ItemDetails itemId={1} getData={getPerson} getImageUrl={getPersonImage}>
         <Record field="birthYear" label="Birth Year: " />
         <Record field="gender" label="Gender: " />
         <Record field="eyeColor" label="Eye Color: " />
@@ -50,7 +52,7 @@ export default class App extends Component {
 
     const starshipDetails = (
       <ItemDetails
-        itemId={5}
+        itemId={10}
         getData={getStraship}
         getImageUrl={getStarshipImage}
       >
@@ -61,29 +63,19 @@ export default class App extends Component {
     );
 
     return (
-      <div className="container">
-        <Header />
-        <div>
-          {/* <RandomPlanet /> */}
-          {/* <ErrorButton /> */}
+      <SwapiServiceProvider value={this.swapiService}>
+        <div className="container">
+          <Header />
+          <Row left={personDetails} right={starshipDetails} />
+          <PersonDetails itemId={5} />
+          <StrshipDetails itemId={11} />
+          <PlanetDetails itemId={9} />
+
+          <PersonList />
+          <PlanetList />
+          <StarshipList />
         </div>
-        <Row left={personDetails} right={starshipDetails} />
-        <PersonDetails itemId={5} />
-        <StrshipDetails itemId={11} />
-        <PlanetDetails itemId={6} />
-        <PlanetDetails />
-        {/* <StarshipDetails /> */}
-
-        <PersonList />
-
-        <PlanetList />
-
-        <StarshipList />
-
-        {/* <PeoplePage /> */}
-
-        {/* <PlanetsPage />  */}
-      </div>
+      </SwapiServiceProvider>
     );
   }
 }

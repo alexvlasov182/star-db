@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
-import SwapiService from "../../services/swapi-service";
 import ErrorButton from "../error-button/error-button";
 
 import "./item-details.css";
@@ -18,8 +16,6 @@ const Record = ({ item, field, label }) => {
 export { Record };
 
 export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
-
   state = {
     item: null,
     image: null,
