@@ -15,10 +15,13 @@ export default class PeoplePage extends Component {
   render() {
     const { selectedItem } = this.state;
     return (
-      <Row
-        left={<PersonList onItemSelected={this.onItemSelected} />}
-        right={<PersonDetails itemId={selectedItem} />}
-      />
+      <div>
+        <h2>People</h2>
+        <Row
+          left={<PersonList onItemSelected={this.onItemSelected} />}
+          right={<PersonDetails itemId={selectedItem} />}
+        />
+      </div>
     );
   }
 }

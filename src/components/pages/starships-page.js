@@ -15,10 +15,13 @@ export default class StarshipsPage extends Component {
   render() {
     const { selectedItem } = this.state;
     return (
-      <Row
-        left={<StarshipList onItemSelected={this.onItemSelected} />}
-        right={<StrshipDetails itemId={selectedItem} />}
-      />
+      <div>
+        <h2>Starships</h2>
+        <Row
+          left={<StarshipList onItemSelected={this.onItemSelected} />}
+          right={<StrshipDetails itemId={selectedItem} />}
+        />
+      </div>
     );
   }
 }
