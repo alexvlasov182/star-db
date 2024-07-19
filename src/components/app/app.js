@@ -10,6 +10,8 @@ import RandomPlanet from "../random-planet/random-planet";
 
 import "./app.css";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 export default class App extends Component {
   state = {
     hasError: false,
@@ -29,14 +31,18 @@ export default class App extends Component {
 
     return (
       <SwapiServiceProvider value={this.swapiService}>
-        <div className="container">
-          <Header />
-          <RandomPlanet />
+        <Router>
+          <div className="container">
+            <Header />
+            <RandomPlanet />
 
-          <PeoplePage />
-          <PlanetsPage />
-          <StarshipsPage />
-        </div>
+            <Routes>
+              <Route path="/people" element={<PeoplePage />} />
+              <Route path="/planets" element={<PlanetsPage />} />
+              <Route path="/starships" element={<StarshipsPage />} />
+            </Routes>
+          </div>
+        </Router>
       </SwapiServiceProvider>
     );
   }
